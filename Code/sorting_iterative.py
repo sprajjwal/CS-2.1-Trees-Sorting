@@ -49,14 +49,14 @@ def selection_sort(items):
                 min = j
         # Swap it with first unsorted item
         items[i], items[min] = items[min], items[i]
-    return items
+    # return items
 
 
 def insertion_sort(items):
     """Sort given items by taking first unsorted item, inserting it in sorted
     order in front of items, and repeating until all items are in order.
-    TODO: Running time: ??? Why and under what conditions?
-    TODO: Memory usage: ??? Why and under what conditions?"""
+    Running time: O(n^2)
+    Memory usage: O(1)"""
     # TODO: Repeat until all items are in sorted order
     for i in range(1, len(items)):
         # Take first unsorted item
@@ -70,7 +70,7 @@ def insertion_sort(items):
             else:
                 break
         items[move_to] = selected
-                
+    # return items
 
 
 
