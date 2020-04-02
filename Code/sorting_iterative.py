@@ -17,14 +17,15 @@ def is_sorted(items):
 def bubble_sort(items):
     """Sort given items by swapping adjacent items that are out of order, and
     repeating until all items are in sorted order.
-    TODO: Running time: O(n^2) because we iterate over the whole loop once then 
+    Running time: O(n^2) because we iterate over the whole loop once then 
     iterate over n-i items
-    TODO: Memory usage: O(1) because it is in place."""
+    Memory usage: O(1) because it is in place."""
     if len(items) < 2:
         return 
     # Repeat until all items are in sorted order
     # Swap adjacent items that are out of order
     for i in range(len(items)):
+        swapped = false
         for j in range(len(items) - i - 1):
             if items[j] > items[j+1]:
                 items[j], items[j+1] = items[j+1], items[j]
@@ -35,8 +36,8 @@ def bubble_sort(items):
 def selection_sort(items):
     """Sort given items by finding minimum item, swapping it with first
     unsorted item, and repeating until all items are in sorted order.
-    TODO: Running time: ??? Why and under what conditions?
-    TODO: Memory usage: ??? Why and under what conditions?"""
+    TODO: Running time: O(n^2)
+    TODO: Memory usage: O(1)"""
     if len(items) < 2:
         return 
     # Repeat until all items are in sorted order
@@ -57,8 +58,21 @@ def insertion_sort(items):
     TODO: Running time: ??? Why and under what conditions?
     TODO: Memory usage: ??? Why and under what conditions?"""
     # TODO: Repeat until all items are in sorted order
-    # TODO: Take first unsorted item
-    # TODO: Insert it in sorted order in front of items
+    for i in range(1, len(items)):
+        # Take first unsorted item
+        selected = items[i]
+        # Insert it in sorted order in front of items
+        move_to = i
+        for j in range(i - 1, -1, -1):
+            if items[j] > selected:
+                items[j + 1] = items[j]
+                move_to = j
+            else:
+                break
+        items[move_to] = selected
+                
+
+
 
 if __name__ == "__main__": 
     assert is_sorted([(3, 5)]) is True
