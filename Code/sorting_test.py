@@ -116,10 +116,12 @@ class IntegerSortTest(unittest.TestCase):
         items4 = [7, 5, 3, 7, 5, 7, 5, 3, 7]
         sort(items4)
         assert items4 == [3, 3, 5, 5, 5, 7, 7, 7, 7]
-        # TODO: Create lists of integers with many duplicate values
-        # TODO: Write more test cases with assert equal list statements
-        # You'll need a lot more than this to test sorting algorithm robustness
-        # ...
+        items5 = [1, 2, 3, 1, 1, 3, 2, 5]
+        sort(items)
+        assert items5 == [1, 1, 1, 2, 2, 3, 3, 5]
+        items6 = [2, 5, 9, 23, 5, 2]
+        sort(items6)
+        assert items6 == [2, 2, 5, 5, 9, 23] 
 
     def test_sort_on_lists_of_random_integers(self):
         # Generate list of 10 random integers from range [1...20]
@@ -172,9 +174,12 @@ class StringSortTest(unittest.TestCase):
         items3 = ['B', 'C', 'A']
         sort(items3)
         assert items3 == ['A', 'B', 'C']
-        # TODO: Write more test cases with assert equal list statements
-        # You'll need a lot more than this to test sorting algorithm robustness
-        # ...
+        items4 = ['d', 'A', 'a', 'B']
+        sort(items4)
+        assert items4 == ['A', 'B', 'a', 'd']
+        items5 = ['d', 'a', 'b', 's']
+        sort(items5)
+        assert items5 =['a', 'b', 'd', 's']
 
     def test_sort_on_fish_book_title(self):
         items = 'one fish two fish red fish blue fish'.split()
@@ -218,7 +223,7 @@ def get_sort_function():
 
 
 # If using PyTest, change this variable to the sort function you want to test
-sort = merge_sort
+sort = quick_sort
 
 
 if __name__ == '__main__':

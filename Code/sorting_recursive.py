@@ -12,20 +12,22 @@ def merge(items1, items2):
         return items1
     items3 = []
 
+    i = 0
+    j = 0
     # Repeat until one list is empty
-    while len(items1) > 0 and len(items2) > 0:
+    while len(items1) > i and len(items2) > j:
         # Find minimum item in both lists and append it to new list
-        if items1[0] < items2[0]:
-            items3.append(items1.pop(0))
+        if items1[i] < items2[j]:
+            items3.append(items1[i])
+            i += 1
         else:
-            items3.append(items2.pop(0))
+            items3.append(items2[j])
+            j += 1
     # Append remaining items in non-empty list to new list
-    items3.extend(items1)
-    items3.extend(items2)
+    items3.extend(items1[i:])
+    items3.extend(items2[j:])
 
     return items3
-
-
 
 def split_sort_merge(items):
     """Sort given items by splitting list into two approximately equal halves,
@@ -70,31 +72,47 @@ def merge_sort(items):
         # for i in range(len(items)):
         #     items[i] = merged[i]
 
-
 def partition(items, low, high):
     """Return index `p` after in-place partitioning given items in range
-    `[low...high]` by choosing a pivot (TODO: document your method here) from
+    `[low...high]` by choosing a pivot (picking the last element) from
     that range, moving pivot into index `p`, items less than pivot into range
     `[low...p-1]`, and items greater than pivot into range `[p+1...high]`.
-    TODO: Running time: ??? Why and under what conditions?
-    TODO: Memory usage: ??? Why and under what conditions?"""
-    # TODO: Choose a pivot any way and document your method in docstring above
-    # TODO: Loop through all items in range [low...high]
-    # TODO: Move items less than pivot into front of range [low...p-1]
-    # TODO: Move items greater than pivot into back of range [p+1...high]
-    # TODO: Move pivot item into final position [p] and return index p
-
+    Running time: O(n) since we go through elements between low and high 
+    which can bet the first and last element 
+    Memory usage: O(1) since it is done in place"""
+    left = low - 1
+    #  Choose a pivot any way and document your method in docstring above
+    pivot = items[high]
+    # Loop through all items in range [low...high]
+    for j in range(low, high):
+    # Move items less than pivot into front of range [low...p-1]
+        if items[j] < pivot:
+            left += 1
+            # Move items greater than pivot into back of range [p+1...high]
+            items[left], items[j] = items[j], items[left]
+    # Move pivot item into final position [p] and return index p
+    items[left + 1], items[high] = items[high], items[left+1]
+    return left+1
 
 def quick_sort(items, low=None, high=None):
     """Sort given items in place by partitioning items in range `[low...high]`
     around a pivot item and recursively sorting each remaining sublist range.
-    TODO: Best case running time: ??? Why and under what conditions?
-    TODO: Worst case running time: ??? Why and under what conditions?
+    Best case running time: O(nlogn) when partition always picks middle element
+    Worst case running time: O(n^2) when partition always picks greates or smallest
+    element
     TODO: Memory usage: ??? Why and under what conditions?"""
-    # TODO: Check if high and low range bounds have default values (not given)
-    # TODO: Check if list or range is so small it's already sorted (base case)
-    # TODO: Partition items in-place around a pivot and get index of pivot
-    # TODO: Sort each sublist range by recursively calling quick sort
+    # Check if high and low range bounds have default values (not given)
+    if low == None:
+        low = 0
+    if high == None:
+        high = len(items) - 1
+    # Check if list or range is so small it's already sorted (base case)
+    if low < high:
+        # Partition items in-place around a pivot and get index of pivot
+        partition_index = partition(items, low, high)
+        # Sort each sublist range by recursively calling quick sort
+        quick_sort(items, low, partition_index - 1)
+        quick_sort(items, partition_index + 1, high)
 
 if __name__ == "__main__":
     a = [1, 3, 6, 7, 9, 10]
