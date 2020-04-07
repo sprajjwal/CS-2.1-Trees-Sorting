@@ -179,7 +179,7 @@ class StringSortTest(unittest.TestCase):
         assert items4 == ['A', 'B', 'a', 'd']
         items5 = ['d', 'a', 'b', 's']
         sort(items5)
-        assert items5 =['a', 'b', 'd', 's']
+        assert items5 == ['a', 'b', 'd', 's']
 
     def test_sort_on_fish_book_title(self):
         items = 'one fish two fish red fish blue fish'.split()
