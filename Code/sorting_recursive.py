@@ -55,7 +55,7 @@ def merge_sort(items):
     """Sort given items by splitting list into two approximately equal halves,
     sorting each recursively, and merging results into a list in sorted order.
     Running time: O(n.logn) since merging takes O(n)
-    Memory usage: O(n^2) merging function returns a new variable after merging"""
+    Memory usage: O(n.logn) merging function returns a new variable after merging"""
     # Check if list is so small it's already sorted (base case)
     if len(items) > 1:
         mid = len(items) // 2
@@ -71,6 +71,7 @@ def merge_sort(items):
         items[:] = merged
         # for i in range(len(items)):
         #     items[i] = merged[i]
+    
 
 def partition(items, low, high):
     """Return index `p` after in-place partitioning given items in range
@@ -92,7 +93,7 @@ def partition(items, low, high):
             items[left], items[j] = items[j], items[left]
     # Move pivot item into final position [p] and return index p
     items[left + 1], items[high] = items[high], items[left+1]
-    return left+1
+    return left + 1
 
 def quick_sort(items, low=None, high=None):
     """Sort given items in place by partitioning items in range `[low...high]`
@@ -100,7 +101,7 @@ def quick_sort(items, low=None, high=None):
     Best case running time: O(nlogn) when partition always picks middle element
     Worst case running time: O(n^2) when partition always picks greates or smallest
     element
-    TODO: Memory usage: ??? Why and under what conditions?"""
+    Memory usage: O(1) because it happens in place."""
     # Check if high and low range bounds have default values (not given)
     if low == None:
         low = 0

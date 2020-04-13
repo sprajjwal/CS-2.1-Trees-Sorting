@@ -117,7 +117,7 @@ class IntegerSortTest(unittest.TestCase):
         sort(items4)
         assert items4 == [3, 3, 5, 5, 5, 7, 7, 7, 7]
         items5 = [1, 2, 3, 1, 1, 3, 2, 5]
-        sort(items)
+        sort(items5)
         assert items5 == [1, 1, 1, 2, 2, 3, 3, 5]
         items6 = [2, 5, 9, 23, 5, 2]
         sort(items6)
@@ -223,7 +223,7 @@ def get_sort_function():
 
 
 # If using PyTest, change this variable to the sort function you want to test
-sort = quick_sort
+sort = counting_sort
 
 
 if __name__ == '__main__':
