@@ -48,7 +48,6 @@ def bucket_sort(numbers, num_buckets=10):
     # Loop over given numbers and place each item in appropriate bucket
     for item in numbers:
         index = (item - minm) // bucket_range
-        print('index: ', index)
         buckets[index].append(item)
 
     # Sort each bucket using any sorting algorithm (recursive or another)
