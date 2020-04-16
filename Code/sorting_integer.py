@@ -33,8 +33,8 @@ def counting_sort(numbers):
 def bucket_sort(numbers, num_buckets=10):
     """Sort given numbers by distributing into buckets representing subranges,
     then sorting each bucket and concatenating all buckets in sorted order.
-    TODO: Running time: O(n.logn) since merge sort is called
-    TODO: Memory usage: O(n) since we make an extra 2d array for items"""
+    Running time: O(n.logn) since merge sort is called
+    Memory usage: O(n) since we make an extra 2d array for items"""
     # Find range of given numbers (minimum and maximum values)
     if len(numbers) < 2:
         return
