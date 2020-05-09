@@ -49,15 +49,16 @@ class PrefixTree:
 
     def insert(self, string):
         """Insert the given string into this prefix tree."""
-        if self.contains(string):
-            return
+        # if self.contains(string):
+        #     return
         node = self.root
         for ch in string:
-            if ch not in node.children.keys():
+            if not node.has_child(ch):
                 node.add_child(ch, PrefixTreeNode(ch))
             node = node.children[ch]
-        self.size += 1
-        node.terminal = True
+        if not node.is_terminal():
+            self.size += 1
+            node.terminal = True
 
 
     def _find_node(self, string):
@@ -72,8 +73,8 @@ class PrefixTree:
         node = self.root
         i = 0
         for i in range(len(string)):
-            if string[i] in node.children.keys():
-                node = node.children[string[i]]
+            if node.has_child(string[i]):
+                node = node.get_child(string[i])
             else:
                 return None, 0
         return node, i+1

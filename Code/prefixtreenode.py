@@ -40,9 +40,7 @@ class PrefixTreeNode:
         character if it is amongst its children, or raise ValueError if not."""
         if self.has_child(character):
             # Find child node for given character in this node's children
-            for key in self.children.keys():
-                if self.children[key].character == character:
-                    return self.children[key]
+            return self.children[character]
         else:
             raise ValueError(f'No child exists for character {character!r}')
 

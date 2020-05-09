@@ -54,7 +54,6 @@ def bucket_sort(numbers, num_buckets=10):
     for i in range(len(buckets)):
         merge_sort(buckets[i])
 
-    # TODO: Loop over buckets and append each bucket's numbers into output list
     # Improve this to mutate input instead of creating new output list
 
     i = 0
